@@ -13,7 +13,6 @@
     />
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   </head>
   <body>
     <div class="container">
@@ -28,39 +27,45 @@
             />
           </div>
           <div class="col-2">
-          <input type="submit" value = "Search" class="btn btn-outline-secondary" id ="search-button">
-          </input>
+            <input
+              type="submit"
+              value="Search"
+              class="btn btn-outline-secondary"
+              id="search-button"
+            />
           </div>
-          
         </div>
       </form>
       <br />
       <div class="row">
-        <div class="h1 col-7">
-          <h5>Today's weather in...</h5></div>
         <div class="h1 col-5">
-          <h5 id="current-time"></h5></div>
+          <h5>Today's weather in...</h5>
+        </div>
+        <div class="h1 col-7">
+          <h5 id="current-time"></h5>
+        </div>
       </div>
       <h1 id="city-name"></h1>
       <div class="row">
-          <div class="col-3">
-        <img src="" alt="" id="icon"><br />
-        </div>
+        <div class="col-3"><img src="" alt="" id="icon" /><br /></div>
         <div class="col-4">
-            <br />
-            <div class="description" id="description"></div>
-        <ul>
+          <br />
+          <div class="description" id="description"></div>
+          <ul>
             <li class="data">Humidity: <span id="humidity"></span>%</li>
             <li class="data">Wind: <span id="wind"></span> km/h</li>
-        </ul>
+          </ul>
         </div>
         <div class="col-5">
           <div class="temperature-today"><span id="temp-current"></span>°</div>
-          <div class="feels-like">Feels Like <span id="feels-like"></span><span>°</span></div>
-          <div class="high-low">High <span id="high"></span>° | <span class="low"> Low </span><span id="low"></span><span class="low">°</span> </div>
+          <div class="feels-like">
+            Feels Like <span id="feels-like"></span><span>°</span>
+          </div>
+          <div class="high-low">
+            High <span id="high"></span>° | <span class="low"> Low </span
+            ><span id="low"></span><span class="low">°</span>
+          </div>
         </div>
-        
-        
       </div>
       <hr />
       <h5>Looking ahead...</h5>
@@ -68,7 +73,12 @@
       <div id="forecast"></div>
     </div>
   </body>
-  <div id="source-code"> <a href="https://github.com/gkellett5/weather-app" target="_blank">Open-source code</a> by Gemma Kellett</div>
+  <div id="source-code">
+    <a href="https://github.com/gkellett5/weather-app" target="_blank"
+      >Open-source code</a
+    >
+    by Gemma Kellett
+  </div>
   <script
     src="https://kit.fontawesome.com/bd5cbcec47.js"
     crossorigin="anonymous"
