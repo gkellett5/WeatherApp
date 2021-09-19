@@ -82,6 +82,14 @@ ul > li {
   font-weight: normal;
   font-size: 12px;
 }
+.weather-forecast-temperature-min {
+  font-weight: lighter;
+  color: #6d767d;
+}
+.low {
+  font-weight: lighter;
+  color: #6d767d;
+}
 #icon {
   display: block;
   margin: 0 auto -40px;
@@ -100,4 +108,11 @@ ul > li {
 #current-time {
   font-size: 10px;
   text-align: right;
+}
+#forecast {
+  text-align: center;
+}
+#low {
+  font-weight: lighter;
+  color: #6d767d;
 }
