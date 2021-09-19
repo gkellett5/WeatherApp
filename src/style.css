@@ -1,0 +1,103 @@
+body {
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(
+    180.3deg,
+    #13547a 5.5%,
+    #6d767d 70.2%,
+    #323e49 95%
+  );
+}
+h1 {
+  font-size: 75px;
+  text-transform: capitalize;
+}
+h5 {
+  font-style: italic;
+  font-weight: lighter;
+  margin-top: 0;
+}
+a {
+  color: black;
+  font-style: normal;
+  text-decoration: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+ul > li {
+  display: inline-block;
+}
+.container {
+  background: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 20px 20px 20px;
+  border: 1px solid #323e49;
+  border-radius: 10px;
+}
+.col {
+  text-align: center;
+}
+.weather {
+  font-size: 50px;
+  color: #323e49;
+}
+.weather-today {
+  font-size: 110px;
+  text-align: center;
+  color: #323e49;
+}
+.h1 {
+  text-align: left;
+}
+.temperature {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+.temperature-today {
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+}
+.temp-measurement {
+  text-align: center;
+  margin-top: 0;
+}
+.temp-measurement:hover {
+  cursor: pointer;
+}
+.description {
+  font-size: 20px;
+  text-transform: capitalize;
+}
+.high-low {
+  font-size: 25px;
+  font-weight: normal;
+}
+.data {
+  font-weight: normal;
+  font-size: 12px;
+}
+#icon {
+  display: block;
+  margin: 0 auto -40px;
+  width: 100px;
+  height: 100px;
+}
+#location-time {
+  text-align: center;
+}
+#source-code {
+  margin-top: 10px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+}
+#current-time {
+  font-size: 10px;
+  text-align: right;
+}
