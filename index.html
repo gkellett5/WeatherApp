@@ -19,7 +19,7 @@
     <div class="container">
       <form id="search-form">
         <div class="row">
-          <div class="col-8">
+          <div class="col-10">
             <input
               type="search"
               class="form-control"
@@ -31,9 +31,7 @@
           <input type="submit" value = "Search" class="btn btn-outline-secondary" id ="search-button">
           </input>
           </div>
-            <div class="col-2 temp-measurement">
-            <a href="" id="celsius">°C</a> | <a href="" id="farenheit">°F</a>
-          </div>
+          
         </div>
       </form>
       <br />
@@ -43,23 +41,30 @@
         <div class="h1 col-5">
           <h5 id="current-time"></h5></div>
       </div>
+      <h1 id="city-name"></h1>
       <div class="row">
-        <div class="col-8">
-          <h1 id="city-name"></h1>
-          <div class="description" id="description"></div>
-          <div class="high-low">High <span id="high"></span>° | <span class="low"> Low </span><span id="low"></span><span class="low">°</span> </div>
-          <ul>
-            <li class="data">Humidity: <span id="humidity"></span>%</li>
-            <li class="data">Wind: <span id="wind"></span> km/h</li>
-          </ul>
+          <div class="col-3">
+        <img src="" alt="" id="icon"><br />
         </div>
         <div class="col-4">
-          <img src="" alt="" id="icon"><br />
-          <div class="temperature-today"><span id="temp-current"></span>°</div>
+            <br />
+            <div class="description" id="description"></div>
+        <ul>
+            <li class="data">Humidity: <span id="humidity"></span>%</li>
+            <li class="data">Wind: <span id="wind"></span> km/h</li>
+        </ul>
         </div>
+        <div class="col-5">
+          <div class="temperature-today"><span id="temp-current"></span>°</div>
+          <div class="feels-like">Feels Like <span id="feels-like"></span><span>°</span></div>
+          <div class="high-low">High <span id="high"></span>° | <span class="low"> Low </span><span id="low"></span><span class="low">°</span> </div>
+        </div>
+        
+        
       </div>
       <hr />
       <h5>Looking ahead...</h5>
+      <br />
       <div id="forecast"></div>
     </div>
   </body>

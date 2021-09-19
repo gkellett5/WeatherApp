@@ -1,4 +1,5 @@
 function displayTemp(response) {
+  console.log(response.data);
   let temp = response.data.main.temp;
   let tempToday = document.querySelector("#temp-current");
   tempToday.innerHTML = Math.round(temp);
@@ -10,6 +11,10 @@ function displayTemp(response) {
   let tempLow = response.data.main.temp_min;
   let tempLowToday = document.querySelector("#low");
   tempLowToday.innerHTML = Math.round(tempLow);
+
+  let tempFeelsLike = response.data.main.feels_like;
+  let tempFeelsLikeToday = document.querySelector("#feels-like");
+  tempFeelsLikeToday.innerHTML = Math.round(tempFeelsLike);
 
   let description = response.data.weather[0].description;
   let descriptionToday = document.querySelector("#description");
@@ -46,7 +51,7 @@ function searchForm(event) {
     alert("Please search for a City");
   }
 
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=metric`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=${unit}`;
 
   axios.get(apiURL).then(displayTemp);
 }
@@ -77,7 +82,7 @@ function displayForecast(response) {
             forecastDay.weather[0].icon
           }@2x.png"
           alt=""
-          width="60"
+          width="75"
         />
         <div class="weather-forecast-temperatures">
           <span class="weather-forecast-temperature-max"> ${Math.round(
@@ -96,12 +101,12 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  let apiKey = "49bbaac1dc8915028fbb18c9703f77a7";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
 let apiKey = "49bbaac1dc8915028fbb18c9703f77a7";
+let unit = "metric";
 
 let formSearch = document.querySelector("#search-form");
 formSearch.addEventListener("submit", searchForm);
