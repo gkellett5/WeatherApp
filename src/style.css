@@ -1,16 +1,13 @@
 body {
   margin: 20px auto;
   padding: 20px;
-  background: linear-gradient(
-    180.3deg,
-    #13547a 5.5%,
-    #6d767d 70.2%,
-    #323e49 95%
-  );
+  max-width: 600px;
 }
 h1 {
-  font-size: 75px;
+  font-size: 60px;
   text-transform: capitalize;
+  color: #323e49;
+  margin: 0;
 }
 h5 {
   font-style: italic;
@@ -33,8 +30,19 @@ ul {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px 20px 20px 20px;
-  border: 1px solid #323e49;
+  border-radius: 5px;
+}
+.border {
+  max-width: 600px;
+  position: relative;
+  background: linear-gradient(
+    180.3deg,
+    #13547a 5.5%,
+    #6d767d 70.2%,
+    #323e49 95%
+  );
   border-radius: 10px;
+  padding: 10px;
 }
 .col {
   text-align: center;
@@ -44,12 +52,9 @@ ul {
   color: #323e49;
 }
 .weather-today {
-  font-size: 110px;
+  font-size: 100px;
   text-align: center;
   color: #323e49;
-}
-.h1 {
-  text-align: left;
 }
 .temperature {
   text-align: center;
@@ -57,7 +62,7 @@ ul {
   font-weight: bold;
 }
 .temperature-today {
-  font-size: 50px;
+  font-size: 60px;
   font-weight: bold;
   text-align: center;
 }
@@ -69,14 +74,13 @@ ul {
   cursor: pointer;
 }
 .description {
-  font-size: 25px;
+  font-size: 22px;
   text-transform: capitalize;
 }
 .high-low {
   font-size: 20px;
   text-align: center;
 }
-
 .weather-forecast-temperature-min {
   font-weight: lighter;
   color: #6d767d;
@@ -106,8 +110,11 @@ ul {
 #source-code {
   margin-top: 10px;
   text-align: center;
-  color: #fff;
   font-size: 12px;
+}
+#source-code a:hover {
+  color: #13547a;
+  font-weight: bold;
 }
 #current-time {
   font-size: 15px;

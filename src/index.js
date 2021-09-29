@@ -1,59 +1,73 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = date.getDay();
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${days[day]} ${hours}:${minutes}`;
+}
+
 function displayTemp(response) {
   console.log(response.data);
   let temp = response.data.main.temp;
-  let tempToday = document.querySelector("#temp-current");
-  tempToday.innerHTML = Math.round(temp);
+  let tempElement = document.querySelector("#temp-current");
+  tempElement.innerHTML = Math.round(temp);
 
   let tempHigh = response.data.main.temp_max;
-  let tempHighToday = document.querySelector("#high");
-  tempHighToday.innerHTML = Math.round(tempHigh);
+  let tempHighElement = document.querySelector("#high");
+  tempHighElement.innerHTML = Math.round(tempHigh);
 
   let tempLow = response.data.main.temp_min;
-  let tempLowToday = document.querySelector("#low");
-  tempLowToday.innerHTML = Math.round(tempLow);
+  let tempLowElement = document.querySelector("#low");
+  tempLowElement.innerHTML = Math.round(tempLow);
 
   let tempFeelsLike = response.data.main.feels_like;
-  let tempFeelsLikeToday = document.querySelector("#feels-like");
-  tempFeelsLikeToday.innerHTML = Math.round(tempFeelsLike);
+  let tempFeelsLikeElement = document.querySelector("#feels-like");
+  tempFeelsLikeElement.innerHTML = Math.round(tempFeelsLike);
 
   let description = response.data.weather[0].description;
-  let descriptionToday = document.querySelector("#description");
-  descriptionToday.innerHTML = description;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = description;
 
   let humidity = response.data.main.humidity;
-  let humidityToday = document.querySelector("#humidity");
-  humidityToday.innerHTML = Math.round(humidity);
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = Math.round(humidity);
 
   let wind = response.data.wind.speed;
-  let windToday = document.querySelector("#wind");
-  windToday.innerHTML = Math.round(wind);
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(wind);
 
   let icon = response.data.weather[0].icon;
-  let iconToday = document.querySelector("#icon");
-  iconToday.setAttribute(
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${icon}@2x.png`
   );
 
+  let date = formatDate(response.data.dt);
+  let dateElement = document.querySelector("#current-time");
+  dateElement.innerHTML = `Updated ${date}`;
+
+  let city = response.data.name;
+  let cityElement = document.querySelector("#city-name");
+  cityElement.innerHTML = city;
+
   getForecast(response.data.coord);
-}
-
-function searchForm(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-input");
-  let cityName = document.querySelector("#city-name");
-  let searchCity = searchInput.value;
-
-  cityName.innerHTML = searchCity;
-  if (searchCity) {
-  } else {
-    cityName.innerHTML = null;
-    alert("Please search for a City");
-  }
-
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=${unit}`;
-
-  axios.get(apiURL).then(displayTemp);
 }
 
 function formatDay(timestamp) {
@@ -105,32 +119,32 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-let apiKey = "49bbaac1dc8915028fbb18c9703f77a7";
+function searchForm(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-input");
+  let cityName = document.querySelector("#city-name");
+  let searchCity = searchInput.value;
+
+  cityName.innerHTML = searchCity;
+  if (searchCity) {
+  } else {
+    cityName.innerHTML = null;
+    alert("Please search for a City");
+  }
+
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiURL).then(displayTemp);
+}
+
+function getLocation(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.coords.latitude}&lon=${coordinates.coords.longitude}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayTemp);
+}
+
+let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
 let unit = "metric";
 
 let formSearch = document.querySelector("#search-form");
 formSearch.addEventListener("submit", searchForm);
 
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-let currentTime = `${day} ${hours}:${minutes}`;
-
-let h5 = document.querySelector("#current-time");
-h5.innerHTML = `Updated ${currentTime}`;
+navigator.geolocation.getCurrentPosition(getLocation);
